@@ -27,9 +27,12 @@ if(passwordLength < 8 && passwordLength > 128){
 }
 //Store answer regarding use of special characters
 var hasSpecialChar = confirm(
+  "Click OK to include special characters."
+);
+//Store answer regarding use of numbers
+var hasNumbers = confirm(
   "Click OK to include numbers."
 );
-
 
 
 
