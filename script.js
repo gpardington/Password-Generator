@@ -25,6 +25,7 @@ if(passwordLength < 8 && passwordLength > 128){
   alert("Password length must be between 8 and 128 characters long.");
   return;
 }
+
 //Store answer regarding use of special characters
 var hasSpecialChar = confirm(
   "Click OK to include special characters."
@@ -42,18 +43,36 @@ var hasUpperCase = confirm(
   "Click OK to include uppercase letters."
 );
 
-
-
-
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+//Storing user's answers
+var passwordOptions = {
+  passwordLength: passwordLength,
+  hasSpecialChar: hasSpecialChar,
+  hasNumbers: hasNumbers,
+  hasLowerCase: hasLowerCase,
+  hasUpperCase: hasUpperCase
+};
+return passwordOptions;
+}
+//Function that gets a random element from a random array
+function getRandom(array){
+  var randomIndex = Math.floor(Math.random() * array.length);
+  var randomElement = array[randomIndex];
+  return randomElement;
 }
 
+
+
+
+
+//
+// Write password to the #password input
+//function writePassword() {
+  //var password = generatePassword();
+  //var passwordText = document.querySelector("#password");
+
+  //passwordText.value = password;
+
+//}
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//generateBtn.addEventListener("click", writePassword);
