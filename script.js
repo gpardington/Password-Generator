@@ -59,7 +59,34 @@ function getRandom(array){
   var randomElement = array[randomIndex];
   return randomElement;
 }
-
+//Function that generates password
+function generatePassword(){
+  var options = getPasswordOptions();
+  var result = [];
+ //Array that stores different types of characters in password
+ var possibleCharacters = [];
+ //Array that stores selected types of characters since not all types of characters MUST be included
+ var chosenCharacters = [];
+//Add array of lowercase letters into the array of possible characters
+if(options.hasLowerCase){
+  possibleCharacters = possibleCharacters.concat(lowerCase);
+  chosenCharacters.push(getRandom(lowerCase));
+}
+//Add array of uppercase letters into the array of possible characters
+if(options.hasUpperCase){
+  possibleCharacters = possibleCharacters.concat(upperCase);
+  chosenCharacters.push(getRandom(upperCase));
+}
+//Add array of numbers into array of possible characters
+if(options.hasNumbers){
+  possibleCharacters = possibleCharacters.concat(numbers);
+  chosenCharacters.push(getRandom(numbers));
+}
+//Arr array of special characters into array of possible characters
+if(options.hasLSpecialChar){
+  possibleCharacters = possibleCharacters.concat(specialChar);
+  chosenCharacters.push(getRandom(specialChar));
+}
 
 
 
