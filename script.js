@@ -12,7 +12,8 @@ var specialChar = [' ','!','"','#','$','%','&','(',')','*','+',',','-','.','/','
 // Password detail prompts
 function getPasswordOptions() {
 //Variable to store the length of the password chosen by user  
-var passwordLength = parselnt(prompt("How many characters would you like your password to have?")
+var passwordLength = parselnt(
+  prompt("How many characters would you like your password to have?")
 );
 //Confirming if password length entered by user is a number. Prompt ends if user did not enter a number.
 if(isNaN(passwordLength)===true) {
@@ -20,10 +21,15 @@ if(isNaN(passwordLength)===true) {
   return;
 }
 // Confirming if password is between 8 and 128 characters long. Prompt ends if it's false.
-if(passwordLength <= 8 && passwordLength >= 128){
+if(passwordLength < 8 && passwordLength > 128){
   alert("Password length must be between 8 and 128 characters long.");
   return;
 }
+//Store answer regarding use of special characters
+var hasSpecialChar = confirm(
+  "Click OK to include numbers."
+);
+
 
 
 
@@ -38,4 +44,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
