@@ -26,14 +26,6 @@ if(passwordLength < 8 && passwordLength > 128){
   return;
 }
 
-//Store answer regarding use of special characters
-var hasSpecialChar = confirm(
-  "Click OK to include special characters."
-);
-//Store answer regarding use of numbers
-var hasNumbers = confirm(
-  "Click OK to include numbers."
-);
 //Store answer regarding use of lowercase letters
 var hasLowerCase = confirm(
   "Click OK to include lowercase letters."
@@ -42,15 +34,24 @@ var hasLowerCase = confirm(
 var hasUpperCase = confirm(
   "Click OK to include uppercase letters."
 );
+//Store answer regarding use of numbers
+var hasNumbers = confirm(
+  "Click OK to include numbers."
+);
+//Store answer regarding use of special characters
+var hasSpecialChar = confirm(
+  "Click OK to include special characters."
+);
 
-//Storing user's answers
+//Storing ALL of user's answers
 var passwordOptions = {
   passwordLength: passwordLength,
-  hasSpecialChar: hasSpecialChar,
-  hasNumbers: hasNumbers,
   hasLowerCase: hasLowerCase,
-  hasUpperCase: hasUpperCase
+  hasUpperCase: hasUpperCase,
+  hasNumbers: hasNumbers,
+  hasSpecialChar: hasSpecialChar
 };
+
 return passwordOptions;
 }
 //Function that gets a random element from a random array
@@ -67,39 +68,34 @@ function generatePassword(){
  var possibleCharacters = [];
  //Array that stores selected types of characters since not all types of characters MUST be included
  var chosenCharacters = [];
-//Add array of lowercase letters into the array of possible characters
+//Add array of lowercase letters into the array of possible characters and then move to chosen characters
 if(options.hasLowerCase){
   possibleCharacters = possibleCharacters.concat(lowerCase);
   chosenCharacters.push(getRandom(lowerCase));
 }
-//Add array of uppercase letters into the array of possible characters
+//Add array of uppercase letters into the array of possible characters and then move to chosen characters
 if(options.hasUpperCase){
   possibleCharacters = possibleCharacters.concat(upperCase);
   chosenCharacters.push(getRandom(upperCase));
 }
-//Add array of numbers into array of possible characters
+//Add array of numbers into array of possible characters and then move to chosen characters
 if(options.hasNumbers){
   possibleCharacters = possibleCharacters.concat(numbers);
   chosenCharacters.push(getRandom(numbers));
 }
-//Arr array of special characters into array of possible characters
-if(options.hasLSpecialChar){
+//Add array of special characters into array of possible characters and then move to chosen characters
+if(options.hasSpecialChar){
   possibleCharacters = possibleCharacters.concat(specialChar);
   chosenCharacters.push(getRandom(specialChar));
 }
+//For-loop to generate a password that matches the character length selected by the user
+for (var i = 0;i < options.length; i++){
+  var possibleCharacters = getRandom(possibleCharacters);
+  result.push(possibleCharacters);
+}
+//Include 1 or more chosen character in the password result with another for-loop
+for (var i = 0;i < chosenCharacters.length; i++){
+  result[i] = chosenCharacters[i];
+}
 
 
-
-
-//
-// Write password to the #password input
-//function writePassword() {
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
-
-  //passwordText.value = password;
-
-//}
-
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
