@@ -33,6 +33,16 @@ var hasSpecialChar = confirm(
 var hasNumbers = confirm(
   "Click OK to include numbers."
 );
+//Store answer regarding use of lowercase letters
+var hasLowerCase = confirm(
+  "Click OK to include lowercase letters."
+);
+//Store answer regarding use of uppercase letters
+var hasUpperCase = confirm(
+  "Click OK to include uppercase letters."
+);
+
+
 
 
 
