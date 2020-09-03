@@ -1,18 +1,18 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 // Array of lowercase characters
-var lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+const lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 // Array of uppercase characters
-var upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+const upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 // Array of numbers
-var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+const numbers = ['0','1','2','3','4','5','6','7','8','9'];
 //Array of special characters
-var specialChar = ['!','"','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','>',"=",'?','@','[',']','/','^','_','`','{','}','|','~'];
+const specialChar = ['!','"','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','>',"=",'?','@','[',']','/','^','_','`','{','}','|','~'];
 
 // Password detail prompts
-function getPasswordOptions(){
+const getPasswordOptions = () => {
 //Variable to store the length of the password chosen by user  
-var passwordLength = parseInt(
+const passwordLength = parseInt(
   prompt("How many characters would you like your password to have?")
 );
 //Confirming if password length entered by user is a number. Prompt ends if user did not enter a number.
@@ -31,19 +31,19 @@ if(passwordLength > 128){
 }
 
 //Store answer regarding use of lowercase letters
-var hasLowerCase = confirm(
+const hasLowerCase = confirm(
   "Click OK to include lowercase letters."
 );
 //Store answer regarding use of uppercase letters
-var hasUpperCase = confirm(
+const hasUpperCase = confirm(
   "Click OK to include uppercase letters."
 );
 //Store answer regarding use of numbers
-var hasNumbers = confirm(
+const hasNumbers = confirm(
   "Click OK to include numbers."
 );
 //Store answer regarding use of special characters
-var hasSpecialChar = confirm(
+const hasSpecialChar = confirm(
   "Click OK to include special characters."
 );
 //Conditional statement that checks if the user didn't include any types of characters. Will return user to beinning if not.
@@ -58,7 +58,7 @@ if(
 }
 
 //Storing ALL of user's answers
-var passwordOptions = {
+const passwordOptions = {
   passwordLength: passwordLength,
   hasLowerCase: hasLowerCase,
   hasUpperCase: hasUpperCase,
@@ -68,19 +68,19 @@ var passwordOptions = {
 return passwordOptions;
 }
 //Function that gets a random element from a random array
-function getRandom(array){
-  var randomIndex = Math.floor(Math.random() * array.length);
-  var randomElement = array[randomIndex];
+const getRandom = (array) => {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  const randomElement = array[randomIndex];
   return randomElement;
 }
 //Function that generates password
-function generatePassword(){
-  var options = getPasswordOptions();
-  var result = [];
+const generatePassword = () => {
+  const options = getPasswordOptions();
+  let result = [];
  //Array that stores different types of characters in password
- var possibleCharacters = [];
+ let possibleCharacters = [];
  //Array that stores selected types of characters since not all types of characters MUST be included
- var chosenCharacters = [];
+ let chosenCharacters = [];
 //Add array of lowercase letters into the array of possible characters and then move to chosen characters
 if(options.hasLowerCase){
   possibleCharacters = possibleCharacters.concat(lowerCase);
@@ -102,12 +102,12 @@ if(options.hasSpecialChar){
   chosenCharacters.push(getRandom(specialChar));
 }
 //For-loop to generate a password that matches the character length selected by the user
-for(var i = 0;i < options.passwordLength; i++){
+for(let i = 0;i < options.passwordLength; i++){
   var possibleCharacter = getRandom(possibleCharacters);
   result.push(possibleCharacter);
 }
 //Include 1 or more chosen character in the password result with another for-loop
-for(var i = 0;i < chosenCharacters.passwordLength; i++){
+for(let i = 0;i < chosenCharacters.length; i++){
   result[i] = chosenCharacters[i];
 }
 //Turn the result into a string
@@ -115,10 +115,10 @@ return result.join('');
 }
 
 //Button functionality
-var generateBtn = document.querySelector('#generate');
-function writePassword(){
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+//var generateBtn = document.querySelector('#generate');
+const writePassword = () => {
+  const password = generatePassword();
+  const passwordText = document.querySelector('#password');
   passwordText.value = password;
 }
 
